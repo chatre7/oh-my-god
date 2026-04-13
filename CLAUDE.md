@@ -6,19 +6,21 @@
 IRON LAW 1: NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST
 IRON LAW 2: NO COMPLETION CLAIMS WITHOUT FRESH VERIFICATION EVIDENCE
 IRON LAW 3: NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST
-IRON LAW 4: NO PHASE TRANSITION WITHOUT A RECEIPT
-IRON LAW 5: NO BUILD WITHOUT A SPEC
+IRON LAW 4: NO PHASE ADVANCE WITHOUT A WRITTEN RECEIPT
+IRON LAW 5: NO BUILD WITHOUT AN APPROVED DESIGN
 ```
 
 ## Pipeline
 
 ```
-IDEATE → SPECIFY → ARCHITECT → BUILD → REVIEW → HARDEN → SHIP → SUSTAIN
+DESIGN → PLAN → BUILD → REVIEW → HARDEN → VERIFY
 ```
+
+Each phase requires a markdown receipt appended to `receipts.md` before advancing. Re-read specs from disk at every transition.
 
 ## On Every Request
 
-1. Classify the request (Full Build / Feature / Harden / Ship / Test / Review / Debug / Architect / Document)
+1. Classify the request (Build / Feature / Fix / Review / Harden)
 2. Identify which phase you are in
 3. Check that prior phase receipt exists before proceeding
 4. Apply relevant Iron Laws for this phase
