@@ -34,6 +34,149 @@ Every request is classified and routed through only the phases it needs:
 
 ---
 
+## Quickstart
+
+### Step 1 — Install
+
+```bash
+cp CLAUDE.md /path/to/your-project/
+cp -r skills/ /path/to/your-project/
+cp -r .claude/ /path/to/your-project/
+```
+
+### Step 2 — Open your project in Claude Code
+
+The session-start hook prints context automatically:
+
+```
+━━━ oh-my-god | Session Resume ━━━━━━━━━━━━━━━━━━━━━
+  Last receipt: none
+  Open spec:    none
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### Step 3 — Start working
+
+```
+/oh-my-god <task>
+```
+
+Claude classifies the request, picks the right phases, and runs them automatically. No approval prompts except before BUILD starts.
+
+---
+
+## Use Cases
+
+### Build a new feature
+
+```
+/oh-my-god add JWT authentication to the Express API
+```
+
+```
+Mode: Feature
+━━━ DESIGN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Proposes: middleware approach vs library approach
+→ You approve design              ← only gate
+
+━━━ PLAN ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Creates task breakdown, exact file paths, no placeholders
+→ automatic
+
+━━━ BUILD ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TDD: writes failing test → implements → watches go GREEN
+→ automatic
+
+━━━ VERIFY ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Runs test suite, attaches output as evidence
+→ automatic
+```
+
+Receipt appended to `receipts.md`:
+```
+## 2026-04-13 14:32 | BUILD | JWT auth
+- [x] Tests written and watched fail first (RED verified)
+- [x] All tests pass — npm test: 8/8
+- [x] No scope creep
+- [x] Committed — feat: add JWT authentication
+```
+
+---
+
+### Fix a bug
+
+```
+/debug the 500 error on POST /api/tasks when body is empty
+```
+
+```
+Mode: Fix
+━━━ DEBUG ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Reads full error + stack trace
+Reproduces the bug consistently
+Traces data flow to find root cause
+States hypothesis: "missing body validation on line 42"
+
+━━━ BUILD ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Writes test that reproduces the bug (RED)
+Fixes root cause — not the symptom (GREEN)
+
+━━━ VERIFY ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Runs full test suite — confirms fix, no regressions
+```
+
+---
+
+### Review code
+
+```
+/review src/auth/middleware.ts
+```
+
+```
+Mode: Review
+5-axis analysis:
+  Correctness  — edge cases, error paths tested?
+  Readability  — can a peer understand in 6 months?
+  Architecture — clean boundaries, no duplication?
+  Security     — input validated, auth enforced?
+  Performance  — N+1 queries, unbounded loops?
+
+Findings rated: CRITICAL / REQUIRED / OPTIONAL / NIT
+```
+
+---
+
+### Harden before launch
+
+```
+/harden
+```
+
+```
+Mode: Harden
+Runs REVIEW → HARDEN checklist:
+  ✓ npm audit — 0 critical/high
+  ✓ No secrets in git log
+  ✓ Security headers configured
+  ✓ Rate limits on auth endpoints
+  ✓ Input validated at all boundaries
+```
+
+---
+
+### Use a specialist skill directly
+
+```
+/oh-my-god review this spec as a product manager
+/oh-my-god audit the API design
+/oh-my-god review security of the payment flow
+```
+
+Any of the 46 skills can be invoked directly — no mode switching needed.
+
+---
+
 ## Installation
 
 ### Claude Code
