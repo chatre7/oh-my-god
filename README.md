@@ -179,35 +179,62 @@ Any of the 46 skills can be invoked directly — no mode switching needed.
 
 ## Installation
 
-### Claude Code
+Run inside your project directory:
 
 ```bash
-/plugin install --plugin-dir /path/to/oh-my-god
+curl -fsSL https://raw.githubusercontent.com/chatre7/oh-my-god/master/install.sh | bash
 ```
 
-Or copy into your project:
+Installs: `CLAUDE.md` · `skills/` (46) · `.claude/commands/` · `hooks/` · `stat.md`
+
+```
+━━━ oh-my-god installed ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  CLAUDE.md        ✓
+  skills/ (46)     ✓
+  .claude/commands ✓
+  hooks/           ✓
+  stat.md          ✓
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### Manual install
+
+<details>
+<summary>Claude Code</summary>
 
 ```bash
 cp CLAUDE.md /path/to/your-project/
 cp -r skills/ /path/to/your-project/
 cp -r .claude/ /path/to/your-project/
+cp -r hooks/ /path/to/your-project/
 ```
 
-### Gemini CLI
+</details>
+
+<details>
+<summary>Gemini CLI</summary>
 
 ```bash
 gemini skills install /path/to/oh-my-god/skills/ --scope workspace
 ```
 
-Or copy `GEMINI.md` + `skills/` into your project root.
+Or copy `GEMINI.md` + `gemini-extension.json` + `skills/` into your project root.
 
-### Codex
+</details>
+
+<details>
+<summary>Codex</summary>
 
 Copy `AGENTS.md` + `skills/` into your project root.
 
-### OpenCode
+</details>
+
+<details>
+<summary>OpenCode</summary>
 
 Copy `AGENTS.md` + `CLAUDE.md` + `skills/` into your project root, then invoke with `use skill tool to load oh-my-god`.
+
+</details>
 
 ---
 
