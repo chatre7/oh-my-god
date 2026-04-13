@@ -6,6 +6,7 @@
 HOOK_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 STATS="$HOOK_ROOT/stat.md"
 SKILL_NAME="${1:-}"
+OUTCOME="${2:-}"  # optional: "success" or "rollback"
 TODAY=$(date +%Y-%m-%d)
 
 if [ -z "$SKILL_NAME" ]; then
@@ -35,14 +36,32 @@ fi
 # Extract exact skill name from matched row
 exact_name=$(echo "$matched_row" | awk -F'|' '{gsub(/^ +| +$/,"",$2); print $2}')
 
-# Get current count and increment
-current_count=$(echo "$matched_row" | awk -F'|' '{gsub(/ /,"",$3); print $3+0}')
-new_count=$((current_count + 1))
+# Parse current row columns: | name | uses | ✓ | ✗ | score | last |
+uses=$(echo "$matched_row"    | awk -F'|' '{gsub(/ /,"",$3); print $3+0}')
+success=$(echo "$matched_row" | awk -F'|' '{gsub(/ /,"",$4); print $4+0}')
+rollback=$(echo "$matched_row"| awk -F'|' '{gsub(/ /,"",$5); print $5+0}')
 
-# Update the row: replace count and last-used date
-sed -i "s/^| $exact_name |.*$/| $exact_name | $new_count | $TODAY |/" "$STATS"
+new_uses=$(( uses + 1 ))
+
+# Update outcome columns
+if [ "$OUTCOME" = "success" ]; then
+  success=$(( success + 1 ))
+elif [ "$OUTCOME" = "rollback" ]; then
+  rollback=$(( rollback + 1 ))
+fi
+
+# Recalculate score
+total=$(( success + rollback ))
+if [ "$total" -gt 0 ]; then
+  score=$(python3 -c "print(f'{round($success/$total*100)}%')")
+else
+  score="—"
+fi
+
+# Update the row
+sed -i "s/^| $exact_name |.*$/| $exact_name | $new_uses | $success | $rollback | $score | $TODAY |/" "$STATS"
 
 # Update "Last updated" header
 sed -i "s/^Last updated: .*/Last updated: $TODAY/" "$STATS"
 
-echo "Logged: $exact_name — $new_count use(s), last used $TODAY"
+echo "Logged: $exact_name — ${new_uses}x, score=${score}, last used $TODAY"

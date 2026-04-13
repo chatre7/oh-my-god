@@ -347,6 +347,61 @@ bash hooks/log-skill.sh oh-my-god
 bash hooks/log-skill.sh test-driven-development
 ```
 
+### Outcome tracking
+
+Log whether a session succeeded or required a rollback — tracked per skill in `stat.md`:
+
+```bash
+bash hooks/log-skill.sh oh-my-god success    # all tests pass, task complete
+bash hooks/log-skill.sh oh-my-god rollback   # had to revert
+```
+
+`stat.md` accumulates success rate over time:
+
+```
+| Skill         | Uses | ✓ | ✗ | Score | Last used  |
+|---------------|------|---|---|-------|------------|
+| oh-my-god     |   12 | 10| 2 |  83%  | 2026-04-13 |
+| brainstorming |    8 |  7| 1 |  87%  | 2026-04-12 |
+```
+
+### Receipt decay
+
+Receipts older than 30 days are automatically moved to an `[ARCHIVED]` section at session start — keeping `receipts.md` focused on recent work without losing history.
+
+```
+receipts.md
+├── [ACTIVE]   — last 30 days, read for context
+└── [ARCHIVED] — older entries, preserved but deprioritized
+```
+
+No configuration needed — runs automatically via the session-start hook.
+
+### Crystallization
+
+Distill repeated patterns from `receipts.md` into permanent lessons in `SKILL.md`.
+
+After VERIFY, oh-my-god checks automatically. When receipts accumulate ≥ 5 since the last crystallize, a nudge appears:
+
+```
+  💡 7 receipts since last crystallize — run /crystallize to distill lessons into SKILL.md
+```
+
+Run crystallization manually at any time:
+
+```
+/crystallize
+```
+
+Toggle the nudge:
+
+```
+/crystallize on    # enable (default)
+/crystallize off   # disable
+```
+
+Crystallization is the only feature that uses LLM tokens — all others (outcome logging, decay, nudge check) are pure bash.
+
 ---
 
 ## Skills (46 total)

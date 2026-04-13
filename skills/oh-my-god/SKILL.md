@@ -672,4 +672,26 @@ Append to `receipts.md`:
 
 ---
 
+## POST-COMPLETION: OUTCOME + CRYSTALLIZATION
+
+After writing the FINAL RECEIPT:
+
+**1. Log outcome** (bash — no token cost):
+```bash
+# All tests pass, no rollback:
+bash hooks/log-skill.sh oh-my-god success
+
+# Had to rollback or revert:
+bash hooks/log-skill.sh oh-my-god rollback
+```
+
+**2. Check crystallization nudge:**
+```bash
+bash hooks/check-crystallize.sh
+```
+
+If output appears, show it to the user as-is. If no output, continue silently.
+
+---
+
 *oh-my-god v1.0 — Synthesized from nagisanzenin/claude-code-production-grade-plugin + obra/superpowers + addyosmani/agent-skills*

@@ -2,23 +2,30 @@
 
 Last updated: 2026-04-13
 
-| Skill | Uses | Last used |
-|-------|------|-----------|
-| oh-my-god | 1 | 2026-04-13 |
-| brainstorming | 0 | — |
-| test-driven-development | 0 | — |
-| systematic-debugging | 0 | — |
-| verification-before-completion | 0 | — |
-| spec-driven-development | 0 | — |
-| planning-and-task-breakdown | 0 | — |
-| incremental-implementation | 0 | — |
-| subagent-driven-development | 0 | — |
-| writing-plans | 0 | — |
-| code-review-and-quality | 0 | — |
-| security-and-hardening | 0 | — |
-| git-workflow-and-versioning | 0 | — |
-| shipping-and-launch | 0 | — |
-| context-engineering | 0 | — |
+| Skill | Uses | ✓ | ✗ | Score | Last used |
+|-------|------|---|---|-------|-----------|
+| oh-my-god | 1 | 0 | 0 | — | 2026-04-13 |
+| brainstorming | 0 | 0 | 0 | — | — |
+| test-driven-development | 0 | 0 | 0 | — | — |
+| systematic-debugging | 0 | 0 | 0 | — | — |
+| verification-before-completion | 0 | 0 | 0 | — | — |
+| spec-driven-development | 0 | 0 | 0 | — | — |
+| planning-and-task-breakdown | 0 | 0 | 0 | — | — |
+| incremental-implementation | 0 | 0 | 0 | — | — |
+| subagent-driven-development | 0 | 0 | 0 | — | — |
+| writing-plans | 0 | 0 | 0 | — | — |
+| code-review-and-quality | 0 | 0 | 0 | — | — |
+| security-and-hardening | 0 | 0 | 0 | — | — |
+| git-workflow-and-versioning | 0 | 0 | 0 | — | — |
+| shipping-and-launch | 0 | 0 | 0 | — | — |
+| context-engineering | 0 | 0 | 0 | — | — |
+
+---
+
+## Crystallization
+Nudge: on
+Threshold: 5
+Last crystallized: —
 
 ---
 

@@ -8,6 +8,9 @@ RECEIPTS="$PROJECT_ROOT/receipts.md"
 STATS="$HOOK_ROOT/stat.md"
 SPECS_DIR="$PROJECT_ROOT/docs/specs"
 
+# --- Decay old receipts ---
+bash "$HOOK_ROOT/hooks/decay-receipts.sh" 2>/dev/null | grep -v "^$" | sed 's/^/  [decay] /' || true
+
 # --- Last receipt + age ---
 last_receipt=""
 receipt_age=""
