@@ -39,9 +39,13 @@ When subagents are not supported: execute each BUILD task sequentially in the sa
 
 Solo developer mode — active by default.
 
-- Zero approval prompts between phases
-- Only one gate remains: HARD GATE before BUILD (design must be approved)
-- All other phase transitions happen automatically
+| Behavior | Express (default) | Thorough | Meticulous |
+|----------|------------------|----------|------------|
+| Approval gates | HARD GATE before BUILD only | Approve after each phase | Approve every step |
+| Phase transitions | Automatic | Manual per phase | Manual per step |
+| Receipt format | Markdown checklist | Markdown checklist | Markdown checklist + full artifact list |
+| Review depth | 5-axis, CRITICAL blocks only | 5-axis, REQUIRED blocks | 5-axis, all findings block |
+| Best for | Solo, fast iteration | Pre-release, team handoff | Security audit, high-stakes systems |
 
 To switch modes, say: "use Thorough mode" or "use Meticulous mode"
 

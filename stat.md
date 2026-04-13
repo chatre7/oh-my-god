@@ -1,10 +1,10 @@
 # oh-my-god | Skill Usage Stats
 
-Last updated: —
+Last updated: 2026-04-13
 
 | Skill | Uses | Last used |
 |-------|------|-----------|
-| oh-my-god | 0 | — |
+| oh-my-god | 1 | 2026-04-13 |
 | brainstorming | 0 | — |
 | test-driven-development | 0 | — |
 | systematic-debugging | 0 | — |
