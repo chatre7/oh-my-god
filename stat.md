@@ -24,7 +24,7 @@ Last updated: 2026-04-13
 
 ## How to update
 
-When using a skill, update the count and date manually or via session-start hook:
+Count **every** skill invocation — including nested calls (e.g. if `oh-my-god` calls `brainstorming` internally, increment both).
 
 1. Find the skill row
 2. Increment Uses by 1

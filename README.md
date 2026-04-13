@@ -338,7 +338,9 @@ Reads `receipts.md` from the current project directory — each project tracked 
 
 ### Skill usage tracking
 
-`stat.md` tracks which skills you use and how often. Update with one command:
+`stat.md` tracks which skills you use and how often — logged automatically on every invocation (including nested calls from within `oh-my-god`).
+
+To log manually:
 
 ```bash
 bash hooks/log-skill.sh oh-my-god

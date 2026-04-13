@@ -21,20 +21,28 @@ if [ ! -f "$STATS" ]; then
   exit 1
 fi
 
-# Check skill exists in table
-if ! grep -q "^| $SKILL_NAME " "$STATS"; then
-  echo "Error: skill '$SKILL_NAME' not found in stat.md"
-  exit 1
+# Strip namespace prefix (e.g. "superpowers:brainstorming" → "brainstorming")
+SKILL_NAME="${SKILL_NAME##*:}"
+
+# Fuzzy match: find first row containing the skill name as a substring
+matched_row=$(grep "^| " "$STATS" | grep -v "^| Skill" | grep -v "^| ---" | awk -F'|' -v s="$SKILL_NAME" 'tolower($2) ~ tolower(s)' | head -1)
+
+if [ -z "$matched_row" ]; then
+  # Not tracked in stat.md — skip silently
+  exit 0
 fi
 
+# Extract exact skill name from matched row
+exact_name=$(echo "$matched_row" | awk -F'|' '{gsub(/^ +| +$/,"",$2); print $2}')
+
 # Get current count and increment
-current_count=$(grep "^| $SKILL_NAME " "$STATS" | awk -F'|' '{gsub(/ /,"",$3); print $3+0}')
+current_count=$(echo "$matched_row" | awk -F'|' '{gsub(/ /,"",$3); print $3+0}')
 new_count=$((current_count + 1))
 
 # Update the row: replace count and last-used date
-sed -i "s/^| $SKILL_NAME |.*$/| $SKILL_NAME | $new_count | $TODAY |/" "$STATS"
+sed -i "s/^| $exact_name |.*$/| $exact_name | $new_count | $TODAY |/" "$STATS"
 
 # Update "Last updated" header
 sed -i "s/^Last updated: .*/Last updated: $TODAY/" "$STATS"
 
-echo "Logged: $SKILL_NAME — $new_count use(s), last used $TODAY"
+echo "Logged: $exact_name — $new_count use(s), last used $TODAY"
