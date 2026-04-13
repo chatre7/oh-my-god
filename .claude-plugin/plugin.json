@@ -1,0 +1,10 @@
+{
+  "name": "oh-my-god",
+  "description": "Full-cycle engineering skill. Synthesized from Production-Grade Plugin, Superpowers, and Agent Skills. Combines Iron Laws (TDD, verification, root cause), receipt gates, subagent-driven development with 2-stage review, and vertical slicing. Use for any build, feature, fix, review, or harden task.",
+  "version": "1.0.0",
+  "author": {
+    "name": "oh-my-god"
+  },
+  "license": "MIT",
+  "keywords": ["tdd", "iron-laws", "receipts", "subagent", "vertical-slicing", "production-grade", "full-cycle", "engineering"]
+}
