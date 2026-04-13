@@ -87,19 +87,21 @@ Use slash commands:
 
 Or individual skills:
 
-| Command | Description |
-|---------|-------------|
-| `/oh-my-god <task>` | Full-cycle unified skill |
-| `/brainstorm` | Design before code (HARD GATE) |
-| `/spec` | Create a 6-area specification |
-| `/plan` | Write implementation plan (no placeholders) |
-| `/build` | TDD cycle for a task |
-| `/test` | Run test suite with evidence |
-| `/review` | 5-axis adversarial code review |
-| `/code-simplify` | Reduce complexity |
-| `/ship` | Staged deployment with rollback plan |
-| `/write-plan` | Write detailed plan |
-| `/execute-plan` | Execute plan with checkpoints |
+| Command | Mode | Description |
+|---------|------|-------------|
+| `/oh-my-god <task>` | auto-classify | Full-cycle unified skill |
+| `/debug <issue>` | Fix | DEBUG → BUILD → VERIFY |
+| `/harden` | Harden | REVIEW + HARDEN |
+| `/review` | Review | 5-axis adversarial code review |
+| `/build <task>` | Feature | TDD cycle for a task |
+| `/spec` | — | Create a 6-area specification |
+| `/plan` | — | Write implementation plan (no placeholders) |
+| `/brainstorm` | — | Design before code (HARD GATE) |
+| `/test` | — | Run test suite with evidence |
+| `/code-simplify` | — | Reduce complexity |
+| `/ship` | — | Staged deployment with rollback plan |
+| `/write-plan` | — | Write detailed plan |
+| `/execute-plan` | — | Execute plan with checkpoints |
 
 ### Gemini CLI
 
@@ -183,13 +185,13 @@ Per-task and final receipts are appended to `receipts.md` in your project root a
 
 ```
 ━━━ oh-my-god | Session Resume ━━━━━━━━━━━━━━━━━━━━━
-  Last receipt: 2026-04-13 14:32 | BUILD | Task-3
+  Last receipt: 2026-04-13 14:32 | BUILD | Task-3 (today)
   Open spec:    2026-04-13-auth-design.md
   Top skills:   tdd(8x), debugging(5x), spec(3x)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-Registered in `hooks/hooks.json` — runs automatically on `SessionStart`.
+Reads `receipts.md` from the **current project directory** (`$PWD`) — each project has its own receipt log. Registered in `hooks/hooks.json` — runs automatically on `SessionStart`.
 
 ### stat.md
 
@@ -202,7 +204,14 @@ Registered in `hooks/hooks.json` — runs automatically on `SessionStart`.
 | test-driven-development | 8 | 2026-04-13 |
 ```
 
-Update manually after each session, or let the session-start hook surface the top 3.
+Update with the log-skill script:
+
+```bash
+bash hooks/log-skill.sh oh-my-god
+bash hooks/log-skill.sh test-driven-development
+```
+
+Or update manually. The session-start hook surfaces the top 3 automatically each session.
 
 ---
 
