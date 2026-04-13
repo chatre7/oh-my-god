@@ -1,7 +1,4 @@
-# Master Protocol — Active Configuration
-
-This project uses the Master Protocol v1.0.
-Full reference: `MASTER_PROTOCOL.md`
+# oh-my-god — Active Configuration
 
 ## Five Iron Laws
 
@@ -19,8 +16,6 @@ IRON LAW 5: NO BUILD WITHOUT A SPEC
 IDEATE → SPECIFY → ARCHITECT → BUILD → REVIEW → HARDEN → SHIP → SUSTAIN
 ```
 
-Each phase requires a JSON receipt before advancing. Re-read specs from disk at every transition.
-
 ## On Every Request
 
 1. Classify the request (Full Build / Feature / Harden / Ship / Test / Review / Debug / Architect / Document)
@@ -35,7 +30,7 @@ Run the command. Read the output. Then make the claim. No exceptions.
 
 ## When in Doubt
 
-Read `MASTER_PROTOCOL.md` for the relevant phase or protocol.
+Read `skills/oh-my-god/SKILL.md` for the relevant phase or protocol.
 
 ---
 
