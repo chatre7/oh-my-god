@@ -9,43 +9,66 @@ TMP_DIR=$(mktemp -d)
 TARGET="${1:-$PWD}"
 
 echo "Installing oh-my-god into: $TARGET"
+echo ""
 
 # Clone repo to temp dir
 git clone --depth=1 --quiet "$REPO" "$TMP_DIR/oh-my-god"
 
 SRC="$TMP_DIR/oh-my-god"
 
-# Copy core files
-cp "$SRC/CLAUDE.md" "$TARGET/CLAUDE.md"
+# --- Append config files (preserve existing content) ---
+append_or_copy() {
+  local file="$1"
+  local src="$SRC/$file"
+  local dest="$TARGET/$file"
+  if [ -f "$dest" ]; then
+    echo "" >> "$dest"
+    echo "# --- oh-my-god ---" >> "$dest"
+    cat "$src" >> "$dest"
+    echo "  $file        appended"
+  else
+    cp "$src" "$dest"
+    echo "  $file        ✓"
+  fi
+}
+
+append_or_copy "CLAUDE.md"
+append_or_copy "AGENTS.md"
+append_or_copy "GEMINI.md"
+
+# --- Skip if exists (project-specific data) ---
+skip_if_exists() {
+  local file="$1"
+  local src="$SRC/$file"
+  local dest="$TARGET/$file"
+  if [ -f "$dest" ]; then
+    echo "  $file        skipped (already exists)"
+  else
+    cp "$src" "$dest"
+    echo "  $file        ✓"
+  fi
+}
+
+skip_if_exists "gemini-extension.json"
+skip_if_exists "stat.md"
+
+# --- Overwrite library files ---
 cp -r "$SRC/skills" "$TARGET/"
+echo "  skills/ (46)     ✓"
+
 cp -r "$SRC/.claude" "$TARGET/"
+echo "  .claude/commands ✓"
 
-# Copy platform files
-cp "$SRC/AGENTS.md" "$TARGET/AGENTS.md"
-cp "$SRC/GEMINI.md" "$TARGET/GEMINI.md"
-cp "$SRC/gemini-extension.json" "$TARGET/gemini-extension.json"
-
-# Copy hooks
 cp -r "$SRC/hooks" "$TARGET/"
 chmod +x "$TARGET/hooks/session-start.sh"
 chmod +x "$TARGET/hooks/log-skill.sh"
-
-# Copy stat.md if not already present
-if [ ! -f "$TARGET/stat.md" ]; then
-  cp "$SRC/stat.md" "$TARGET/stat.md"
-fi
+echo "  hooks/           ✓"
 
 # Cleanup
 rm -rf "$TMP_DIR"
 
 echo ""
 echo "━━━ oh-my-god installed ━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  CLAUDE.md        ✓"
-echo "  skills/ (46)     ✓"
-echo "  .claude/commands ✓"
-echo "  hooks/           ✓"
-echo "  stat.md          ✓"
+echo "  Start with: /oh-my-god <task>"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo ""
-echo "Start with: /oh-my-god <task>"
 echo ""
