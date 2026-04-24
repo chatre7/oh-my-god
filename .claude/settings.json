@@ -12,6 +12,15 @@
     ],
     "PostToolUse": [
       {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash hooks/track-skill.sh"
+          }
+        ]
+      },
+      {
         "hooks": [
           {
             "type": "command",

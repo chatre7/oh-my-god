@@ -57,8 +57,10 @@ mkdir -p "$TARGET/.agents"
 cp -r "$SRC/.agents/skills" "$TARGET/.agents/"
 echo "  .agents/skills/ (46) ✓"
 
-cp -r "$SRC/.claude" "$TARGET/"
+mkdir -p "$TARGET/.claude"
+cp -r "$SRC/.claude/commands" "$TARGET/.claude/"
 echo "  .claude/commands ✓"
+skip_if_exists ".claude/settings.json"
 
 cp -r "$SRC/hooks" "$TARGET/"
 chmod +x "$TARGET/hooks/session-start.sh"
