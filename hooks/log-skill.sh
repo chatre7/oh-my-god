@@ -58,10 +58,18 @@ else
   score="—"
 fi
 
-# Update the row
-sed -i "s/^| $exact_name |.*$/| $exact_name | $new_uses | $success | $rollback | $score | $TODAY |/" "$STATS"
-
-# Update "Last updated" header
-sed -i "s/^Last updated: .*/Last updated: $TODAY/" "$STATS"
+# Update the row and header (python3 — avoids sed -i portability issues on macOS)
+python3 - "$STATS" "$exact_name" "$new_uses" "$success" "$rollback" "$score" "$TODAY" <<'EOF'
+import sys, re
+path, name, uses, success, rollback, score, today = sys.argv[1:]
+content = open(path, encoding='utf-8').read()
+content = re.sub(
+    r'^\| ' + re.escape(name) + r' \|.*$',
+    f'| {name} | {uses} | {success} | {rollback} | {score} | {today} |',
+    content, flags=re.MULTILINE
+)
+content = re.sub(r'^Last updated: .*', f'Last updated: {today}', content, flags=re.MULTILINE)
+open(path, 'w', encoding='utf-8').write(content)
+EOF
 
 echo "Logged: $exact_name — ${new_uses}x, score=${score}, last used $TODAY"
