@@ -179,6 +179,8 @@ Any of the 46 skills can be invoked directly — no mode switching needed.
 
 ## Installation
 
+**Prerequisites:** `bash`, `git`, `python3`
+
 Run inside your project directory:
 
 ```bash
