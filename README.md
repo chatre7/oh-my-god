@@ -173,7 +173,7 @@ Runs REVIEW → HARDEN checklist:
 /oh-my-god review security of the payment flow
 ```
 
-Any of the 46 skills can be invoked directly — no mode switching needed.
+Any of the 49 skills can be invoked directly — no mode switching needed.
 
 ---
 
@@ -187,12 +187,12 @@ Run inside your project directory:
 curl -fsSL https://raw.githubusercontent.com/chatre7/oh-my-god/master/install.sh | bash
 ```
 
-Installs: `CLAUDE.md` · `.agents/skills/` (46) · `.claude/commands/` · `hooks/` · `stat.md`
+Installs: `CLAUDE.md` · `.agents/skills/` (49) · `.claude/commands/` · `hooks/` · `stat.md`
 
 ```
 ━━━ oh-my-god installed ━━━━━━━━━━━━━━━━━━━━━━━━━━━
   CLAUDE.md              ✓
-  .agents/skills/ (46)   ✓
+  .agents/skills/ (49)   ✓
   .claude/commands       ✓
   hooks/                 ✓
   stat.md                ✓
@@ -406,7 +406,7 @@ Crystallization is the only feature that uses LLM tokens — all others (outcome
 
 ---
 
-## Skills (46 total)
+## Skills (49 total)
 
 <details>
 <summary>From Superpowers (13)</summary>
