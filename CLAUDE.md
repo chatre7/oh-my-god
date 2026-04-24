@@ -32,7 +32,7 @@ Run the command. Read the output. Then make the claim. No exceptions.
 
 ## When in Doubt
 
-Read `skills/oh-my-god/SKILL.md` for the relevant phase or protocol.
+Read `.agents/skills/oh-my-god/SKILL.md` for the relevant phase or protocol.
 
 ---
 

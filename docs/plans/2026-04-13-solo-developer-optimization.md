@@ -13,11 +13,11 @@
 ### Task 1: Express Mode Default + Lightweight Receipt
 
 **Files:**
-- Modify: `skills/oh-my-god/SKILL.md`
+- Modify: `.agents/skills/oh-my-god/SKILL.md`
 
 - [ ] **Step 1: เพิ่ม Express Mode default หลัง Platform Support table**
 
-เปิดไฟล์ `skills/oh-my-god/SKILL.md` หา section `## FIVE IRON LAWS` แล้วเพิ่ม block นี้ก่อนหน้า:
+เปิดไฟล์ `.agents/skills/oh-my-god/SKILL.md` หา section `## FIVE IRON LAWS` แล้วเพิ่ม block นี้ก่อนหน้า:
 
 ```markdown
 ## DEFAULT MODE: EXPRESS
@@ -74,7 +74,7 @@ Append to `receipts.md`:
 
 - [ ] **Step 4: Verify**
 
-อ่าน `skills/oh-my-god/SKILL.md` ตรวจว่า:
+อ่าน `.agents/skills/oh-my-god/SKILL.md` ตรวจว่า:
 - มี `## DEFAULT MODE: EXPRESS` section ก่อน Iron Laws
 - Per-Task Receipt เป็น markdown checklist ไม่ใช่ JSON
 - Final Receipt เป็น markdown checklist ไม่ใช่ JSON
@@ -264,7 +264,7 @@ Expected: `valid JSON`
 
 ## Checkpoint: หลังทำครบทั้ง 4 tasks
 
-- [ ] `skills/oh-my-god/SKILL.md` มี Express Mode section และ receipt เป็น markdown
+- [ ] `.agents/skills/oh-my-god/SKILL.md` มี Express Mode section และ receipt เป็น markdown
 - [ ] `stat.md` อยู่ที่ root มี table ครบ
 - [ ] `hooks/session-start.sh` รันได้ output ถูกต้อง
 - [ ] `hooks/hooks.json` เป็น valid JSON

@@ -40,7 +40,7 @@ Every request is classified and routed through only the phases it needs:
 
 ```bash
 cp CLAUDE.md /path/to/your-project/
-cp -r skills/ /path/to/your-project/
+cp -r .agents/ /path/to/your-project/
 cp -r .claude/ /path/to/your-project/
 ```
 
@@ -185,15 +185,15 @@ Run inside your project directory:
 curl -fsSL https://raw.githubusercontent.com/chatre7/oh-my-god/master/install.sh | bash
 ```
 
-Installs: `CLAUDE.md` · `skills/` (46) · `.claude/commands/` · `hooks/` · `stat.md`
+Installs: `CLAUDE.md` · `.agents/skills/` (46) · `.claude/commands/` · `hooks/` · `stat.md`
 
 ```
 ━━━ oh-my-god installed ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  CLAUDE.md        ✓
-  skills/ (46)     ✓
-  .claude/commands ✓
-  hooks/           ✓
-  stat.md          ✓
+  CLAUDE.md              ✓
+  .agents/skills/ (46)   ✓
+  .claude/commands       ✓
+  hooks/                 ✓
+  stat.md                ✓
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -204,7 +204,7 @@ Installs: `CLAUDE.md` · `skills/` (46) · `.claude/commands/` · `hooks/` · `s
 
 ```bash
 cp CLAUDE.md /path/to/your-project/
-cp -r skills/ /path/to/your-project/
+cp -r .agents/ /path/to/your-project/
 cp -r .claude/ /path/to/your-project/
 cp -r hooks/ /path/to/your-project/
 ```
@@ -215,24 +215,24 @@ cp -r hooks/ /path/to/your-project/
 <summary>Gemini CLI</summary>
 
 ```bash
-gemini skills install /path/to/oh-my-god/skills/ --scope workspace
+gemini skills install /path/to/oh-my-god/.agents/skills/ --scope workspace
 ```
 
-Or copy `GEMINI.md` + `gemini-extension.json` + `skills/` into your project root.
+Or copy `GEMINI.md` + `gemini-extension.json` + `.agents/` into your project root.
 
 </details>
 
 <details>
 <summary>Codex</summary>
 
-Copy `AGENTS.md` + `skills/` into your project root.
+Copy `AGENTS.md` + `.agents/` into your project root.
 
 </details>
 
 <details>
 <summary>OpenCode</summary>
 
-Copy `AGENTS.md` + `CLAUDE.md` + `skills/` into your project root, then invoke with `use skill tool to load oh-my-god`.
+Copy `AGENTS.md` + `CLAUDE.md` + `.agents/` into your project root, then invoke with `use skill tool to load oh-my-god`.
 
 </details>
 
@@ -275,15 +275,15 @@ build a user authentication system with JWT
 fix the 500 error on /api/tasks
 ```
 
-Or reference explicitly: `@skills/oh-my-god/SKILL.md — build a user authentication system`
+Or reference explicitly: `@.agents/skills/oh-my-god/SKILL.md — build a user authentication system`
 
 > Gemini CLI does not support subagents — BUILD phase runs sequentially.
 
 ### Codex
 
 ```
-Apply the instructions in skills/oh-my-god/SKILL.md to build a user authentication system
-Apply the instructions in skills/oh-my-god/SKILL.md to fix the 500 error on /api/tasks
+Apply the instructions in .agents/skills/oh-my-god/SKILL.md to build a user authentication system
+Apply the instructions in .agents/skills/oh-my-god/SKILL.md to fix the 500 error on /api/tasks
 ```
 
 ### OpenCode
@@ -434,9 +434,9 @@ Crystallization is the only feature that uses LLM tokens — all others (outcome
 | Platform | Subagents | Notes |
 |----------|-----------|-------|
 | Claude Code | Full | Native — recommended |
-| Gemini CLI | Sequential fallback | See `skills/oh-my-god/references/gemini-tools.md` |
-| Codex | Sequential fallback | See `skills/oh-my-god/references/codex-tools.md` |
-| OpenCode | Via `@mention` | See `skills/oh-my-god/references/opencode-tools.md` |
+| Gemini CLI | Sequential fallback | See `.agents/skills/oh-my-god/references/gemini-tools.md` |
+| Codex | Sequential fallback | See `.agents/skills/oh-my-god/references/codex-tools.md` |
+| OpenCode | Via `@mention` | See `.agents/skills/oh-my-god/references/opencode-tools.md` |
 
 ---
 

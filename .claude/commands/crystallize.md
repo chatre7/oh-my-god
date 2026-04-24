@@ -30,7 +30,7 @@ Confirm: "Crystallization nudge set to [on/off]."
    - New rule for SKILL.md → add under a `## Compiled Lessons` section
    - Existing rule strengthened → note it (don't duplicate)
    - One-off event → skip (not a pattern)
-4. Update `skills/oh-my-god/SKILL.md` — append or update `## Compiled Lessons` section
+4. Update `.agents/skills/oh-my-god/SKILL.md` — append or update `## Compiled Lessons` section
 5. Update stat.md:
    - Set `Last crystallized` to today's date (YYYY-MM-DD)
 6. Report: how many patterns found, what was added

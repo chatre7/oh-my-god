@@ -20,7 +20,7 @@ All other phase transitions happen automatically without asking.
 
 **Why:** Solo developer doesn't need to approve their own decisions at every phase. The gates slow down solo work without adding value.
 
-**Where:** `skills/oh-my-god/SKILL.md` — add to opening section
+**Where:** `.agents/skills/oh-my-god/SKILL.md` — add to opening section
 
 ---
 
@@ -52,7 +52,7 @@ All other phase transitions happen automatically without asking.
 
 **Why:** JSON receipts add friction for solo use. The value is in the verification checklist, not the structured format. A running markdown log is easier to read across sessions.
 
-**Where:** `skills/oh-my-god/SKILL.md` — Phase 4 BUILD receipt section
+**Where:** `.agents/skills/oh-my-god/SKILL.md` — Phase 4 BUILD receipt section
 
 ---
 

@@ -53,8 +53,9 @@ skip_if_exists "gemini-extension.json"
 skip_if_exists "stat.md"
 
 # --- Overwrite library files ---
-cp -r "$SRC/skills" "$TARGET/"
-echo "  skills/ (46)     ✓"
+mkdir -p "$TARGET/.agents"
+cp -r "$SRC/.agents/skills" "$TARGET/.agents/"
+echo "  .agents/skills/ (46) ✓"
 
 cp -r "$SRC/.claude" "$TARGET/"
 echo "  .claude/commands ✓"
