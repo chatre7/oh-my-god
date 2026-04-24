@@ -11,3 +11,6 @@ Thumbs.db
 *.swp
 *.swo
 .claude/settings.local.json
+
+# Tool call traces — project-local, not part of the plugin
+traces/
