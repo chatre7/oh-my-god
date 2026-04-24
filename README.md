@@ -267,6 +267,7 @@ Copy `AGENTS.md` + `CLAUDE.md` + `.agents/` into your project root, then invoke 
 | `/ship` | — | Staged deployment with rollback plan |
 | `/write-plan` | — | Detailed plan |
 | `/execute-plan` | — | Execute plan with checkpoints |
+| `/trace [date]` | — | View tool call traces for today or YYYY-MM-DD |
 
 ### Gemini CLI
 
@@ -402,30 +403,57 @@ Toggle the nudge:
 /crystallize off   # disable
 ```
 
-Crystallization is the only feature that uses LLM tokens — all others (outcome logging, decay, nudge check) are pure bash.
+Crystallization is the only feature that uses LLM tokens — all others (outcome logging, decay, nudge check, tool call traces) are pure bash.
+
+### Tool Call Traces
+
+Every tool call (Read, Write, Edit, Bash, Glob, Grep, Agent, Skill, WebFetch, WebSearch) is logged automatically to `traces/YYYY-MM-DD.jsonl` — project-local, gitignored, zero token cost.
+
+```jsonl
+{"ts":"2026-04-25T10:30:00","tool":"Bash","input":"git status"}
+{"ts":"2026-04-25T10:30:01","tool":"Read","input":"src/index.ts"}
+{"ts":"2026-04-25T10:30:02","tool":"Edit","input":"src/index.ts"}
+```
+
+View with `/trace` or `/trace 2026-04-25`:
+
+```
+━━━ Traces: 2026-04-25 (14 calls) ━━━━━━━━━━━━━━━━━━━━
+Summary:
+  Bash                 7 calls
+  Edit                 3 calls
+  Read                 2 calls
+  Write                2 calls
+
+Timeline:
+  10:30:00  Bash         git status
+  10:30:01  Read         src/index.ts
+  ...
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
 ---
 
 ## Skills (49 total)
 
 <details>
-<summary>From Superpowers (13)</summary>
+<summary>From Superpowers (14)</summary>
 
-`brainstorming` `test-driven-development` `verification-before-completion` `systematic-debugging` `subagent-driven-development` `writing-plans` `executing-plans` `dispatching-parallel-agents` `using-git-worktrees` `finishing-a-development-branch` `requesting-code-review` `receiving-code-review` `writing-skills`
-
-</details>
-
-<details>
-<summary>From Agent Skills (20)</summary>
-
-`spec-driven-development` `planning-and-task-breakdown` `incremental-implementation` `context-engineering` `code-review-and-quality` `security-and-hardening` `performance-optimization` `test-driven-development` `debugging-and-error-recovery` `git-workflow-and-versioning` `ci-cd-and-automation` `shipping-and-launch` `documentation-and-adrs` `frontend-ui-engineering` `api-and-interface-design` `idea-refine` `source-driven-development` `deprecation-and-migration` `code-simplification` `browser-testing-with-devtools`
+`brainstorming` `test-driven-development` `verification-before-completion` `systematic-debugging` `subagent-driven-development` `writing-plans` `executing-plans` `dispatching-parallel-agents` `using-git-worktrees` `finishing-a-development-branch` `requesting-code-review` `receiving-code-review` `writing-skills` `using-superpowers`
 
 </details>
 
 <details>
-<summary>From Production-Grade Plugin (13)</summary>
+<summary>From Agent Skills (21)</summary>
 
-`production-grade` `product-manager` `solution-architect` `software-engineer` `frontend-engineer` `qa-engineer` `security-engineer` `code-reviewer` `devops` `sre` `technical-writer` `polymath` `skill-maker`
+`spec-driven-development` `planning-and-task-breakdown` `incremental-implementation` `context-engineering` `code-review-and-quality` `security-and-hardening` `performance-optimization` `test-driven-development` `debugging-and-error-recovery` `git-workflow-and-versioning` `ci-cd-and-automation` `shipping-and-launch` `documentation-and-adrs` `frontend-ui-engineering` `api-and-interface-design` `idea-refine` `source-driven-development` `deprecation-and-migration` `code-simplification` `browser-testing-with-devtools` `using-agent-skills`
+
+</details>
+
+<details>
+<summary>From Production-Grade Plugin (14)</summary>
+
+`production-grade` `product-manager` `solution-architect` `software-engineer` `frontend-engineer` `qa-engineer` `security-engineer` `code-reviewer` `devops` `sre` `technical-writer` `polymath` `skill-maker` `data-scientist`
 
 </details>
 
