@@ -23,6 +23,21 @@
 - Confidence: 95% — implementation verified live this session; only missing piece was the receipt itself
 - Unknowns: stat.md update mechanism (manual vs hook) was not exercised under load — just structural verification
 
+## 2026-04-25 | BUILD+VERIFY | FPCOS-Lite Cognitive Layer
+- [x] Task 1 — Confidence + Unknowns added to Per-Task Receipt template (SKILL.md:429-430)
+- [x] Task 1 — Confidence + Unknowns added to Final Receipt template (SKILL.md:723-724)
+- [x] Task 1 — Confidence/Unknowns rules block added under Per-Task Receipt
+- [x] Task 2 — System Lens template added inside PHASE D: DEBUG (SKILL.md:585) with rules
+- [x] Task 3 — Reality Anchor (Knowns/Inferred/Unknowns) added as step 0 inside PHASE 1: DESIGN Process (SKILL.md:110)
+- [x] Task 4 — N/A: SKILL.md has no pre-existing filled-in receipt examples to update; dogfooding satisfied by every receipt in receipts.md using the new format
+- [x] All grep verifies pass (Confidence, Unknowns, System Lens, Root Cause Hypothesis, Reality Anchor, blocks design)
+- [x] Total diff: 54 lines added, under 80-line cap from spec success criteria
+- [x] No other files touched (only SKILL.md modified)
+- [x] Iron Laws section verbatim unchanged
+- [x] All 11 section headers intact (DEFAULT MODE, FIVE IRON LAWS, STEP 0, PHASE 1-6, PHASE D, PRE-COMPLETION GATE, FINAL RECEIPT)
+- Confidence: 90% — all spec acceptance items met, all grep verifies pass, structural integrity confirmed
+- Unknowns: real-world validation — whether Confidence/Unknowns get filled meaningfully or as ritual, and whether System Lens actually catches symptom-only fixes, will only be visible after 4 weeks of receipts (per spec success criteria)
+
 ## 2026-04-25 | PLAN | FPCOS-Lite Cognitive Layer
 - [x] Read existing 2026-04-13 plan for format reference
 - [x] Mapped target sections in SKILL.md (PHASE 1 DESIGN, PHASE 3 BUILD receipt, PHASE 6 VERIFY, PHASE D DEBUG)

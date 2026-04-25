@@ -107,6 +107,25 @@ This applies to EVERY request regardless of perceived simplicity.
 
 ### Process
 
+**0. Reality Anchor — Required First Output**
+
+Before exploring or proposing anything, output this template. Fill it in as you go through the steps below:
+
+```markdown
+### Reality
+Knowns (with evidence):
+  - <fact> — <file:line | command output | user message>
+Inferred (assumptions, may be wrong):
+  - <assumption> — <why we are inferring this>
+Unknowns (unresolved):
+  - <missing info> — <blocks design? yes/no>
+```
+
+**Rules:**
+- Knowns without an evidence reference are invalid — move them to Inferred.
+- Unknowns marked "blocks design: yes" must be resolved (ask user, read file, run command) before proposing options.
+- Unknowns marked "blocks design: no" carry forward into the receipt's Unknowns line.
+
 **1. Explore context first**
 Read existing files, docs, recent commits. Understand before proposing.
 
@@ -407,12 +426,19 @@ Append to `receipts.md` in the project root:
 - [x] All tests pass — [command output: N/N]
 - [x] No scope creep — touched only specified files
 - [x] Committed — [commit hash or message]
+- Confidence: NN% — [one-line reason]
+- Unknowns: [what was NOT verified, or "None" if deliberate]
 ```
 
 If `receipts.md` does not exist, create it with header:
 ```markdown
 # oh-my-god | Receipts
 ```
+
+**Confidence / Unknowns rules:**
+- Required on VERIFY and FINAL receipts. Optional on intermediate phase receipts (DESIGN, PLAN, BUILD per-task).
+- 100% confidence is only allowed when every listed Unknown is resolved.
+- "Unknowns: None" must be deliberate, not a default. If you are not sure, list what you did not check.
 
 ---
 
@@ -556,6 +582,32 @@ NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST
 If you haven't completed Phase 1, you cannot propose fixes.
 ```
 
+### System Lens — Required Output Before Any Fix Proposal
+
+DEBUG must produce this template, filled in, before proposing any fix:
+
+```markdown
+### System Lens
+Symptom:
+Reproduction:
+Observed vs Expected:
+Data Flow:
+  1. Input →
+  2. Processing →
+  3. Output →
+Variables / State:
+  - <name>: source → transformation → failure point
+Dependencies touched:
+Root Cause Hypothesis:
+Evidence supporting hypothesis:
+Ruled out:
+```
+
+**Rules:**
+- No fix proposal until every field has content (or an explicit "N/A — <reason>").
+- "Ruled out" must list at least one alternative hypothesis that was actually checked, not assumed away.
+- If reproduction is impossible, state why and lower the receipt's Confidence accordingly.
+
 ### Four Phases (complete each before the next)
 
 **Phase 1 — Root Cause**
@@ -668,6 +720,8 @@ Append to `receipts.md`:
 - [x] Tests passing: [N/N]
 - [x] Security checklist verified
 - [x] Spec criteria met line-by-line
+- Confidence: NN% — [one-line reason, evidence-grounded]
+- Unknowns: [remaining risks or "None" — see rules in Per-Task Receipt section]
 ```
 
 ---
